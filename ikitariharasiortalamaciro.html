@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Restoran Yönetim Paneli</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="dashboard.html">Ana Sayfa</a>
+            
+            
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="exit.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            
+                            <div class="sb-sidenav-menu-heading">ANAMENÜ</div>
+                           
+                            <a class="nav-link" href="veri_giris_2.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Günlük Veri Girişi
+                            </a>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Ciro Karşılaştırmaları
+                            </a>
+                            <a class="nav-link" href="personel.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Personel - Fiş Verileri
+                            </a>
+                            <a class="nav-link" href="ikitariharasiciro.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                İki Tarih Arası Cirolar (Günlük)
+                            </a>
+                            <a class="nav-link" href="ikitariharasifisler.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                İki Tarih Arası Fişler (Günlük)
+                            </a>
+                            <a class="nav-link" href="ikitariharasitoplamciro.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                İki Tarih Arası Toplam Ciro
+                            </a>
+                            <a class="nav-link" href="ikitariharasitoplamfis.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                İki Tarih Arası Toplam Fiş
+                            </a>
+                           
+                            
+                            <a class="nav-link" href="yiilaringunleregoreciroortalamalari.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Yılların Günlere Göre Ciro Ortalamaları
+                            </a>
+                            <a class="nav-link" href="yillaringunleregorefissayisiortalamalari.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Yılların Günlere Göre Fiş Sayısı Ortalamaları
+                            </a>
+                                 
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+              <!DOCTYPE html>
+              <html lang="en">
+              <head>
+                <meta charset="UTF-8">
+                <title>Girilen Yılın Aylık Ortalaması</title>
+                <style>
+                  body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
+                  }
+                  h1 {
+                    text-align: center;
+                  }
+                  label {
+                    display: block;
+                    margin-bottom: 5px;
+                  }
+                  input[type="number"] {
+                    padding: 5px;
+                    margin-bottom: 10px;
+                  }
+                  button {
+                    padding: 8px 16px;
+                    background-color: #007bff;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                  }
+                  button:hover {
+                    background-color: #0056b3;
+                  }
+                  table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                  }
+                  th, td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: left;
+                  }
+                  th {
+                    background-color: #f2f2f2;
+                  }
+                </style>
+              </head>
+              <body>
+              
+              <h1>Girilen Yılın Aylık Ortalaması</h1>
+              
+              <label for="yearInput">Yıl:</label>
+              <input type="number" id="yearInput" min="2000" max="2100" value="2022">
+              <button onclick="getData()">Verileri Getir</button>
+              
+              <div id="result"></div>
+              
+              <script>
+                var monthlyData = []; // monthlyData değişkenini tanımla
+              
+                // Verileri almak için olan fonksiyon
+                function getData() {
+                const year = document.getElementById('yearInput').value;
+                monthlyData = []; 
+                  fetch(`http://localhost:3000/gunlukciro/${year}`)
+                    .then(response => response.json())
+                    .then(data => {
+                      const resultDiv = document.getElementById('result');
+                      resultDiv.innerHTML = '';
+                      if (data.error) {
+                        resultDiv.innerText = 'Veriler alınamadı. Hata: ' + data.error;
+                      } else {
+                        const table = document.createElement('table');
+                        const headerRow = table.insertRow();
+                        const headers = ['Sıra', 'Yıl', 'Ay', 'Ortalama Ciro']; 
+                        headers.forEach(headerText => {
+                          const header = document.createElement('th');
+                          header.textContent = headerText;
+                          headerRow.appendChild(header);
+                        });
+              
+                        data.forEach((rowData, index) => {
+                          const row = table.insertRow();
+                          const values = Object.values(rowData);
+                          monthlyData.push({
+                            order: index + 1,
+                            year: values[0],
+                            month: values[1],
+                            averageRevenue: parseInt(values[2]) // Veriyi integer'a dönüştür
+                          });
+              
+                          const allValues = [index + 1, ...values];
+                          allValues.forEach(value => {
+                            const cell = row.insertCell();
+                            cell.textContent = value;
+                          });
+                        });
+              
+                        resultDiv.appendChild(table);
+              
+                        var dataPoints = [];
+                        monthlyData.forEach(function(item) {
+                          dataPoints.push({ label: item.month, y: item.averageRevenue });
+                        });
+              
+                        var options = {
+                          title: {
+                            text: "Column Chart in jQuery CanvasJS"
+                          },
+                          data: [
+                            {
+                              type: "column",
+                              dataPoints: dataPoints
+                            }
+                          ]
+                        };
+              
+                        $("#chartContainer").CanvasJSChart(options);
+                      }
+                    })
+                    .catch(error => {
+                      const resultDiv = document.getElementById('result');
+                      resultDiv.innerText = 'Bir hata oluştu: ' + error.message;
+                    });
+                }
+              
+              </script>
+              
+              </body>
+              
+              <html>
+              <head>
+              <script>
+              window.onload = function () {
+              
+              //Better to construct options first and then pass it as a parameter
+              var options = {
+                title: {
+                  text: "Girilen Yılın Aylık Ortlalaması Grafiği"              
+                },
+                data: [              
+                {
+                  // Change type to "doughnut", "line", "splineArea", etc.
+                  type: "column",
+                  dataPoints: [
+                    { label: "January",  y: monthlyData[0].averageRevenue },
+                    { label: "February", y: monthlyData[1].averageRevenue },
+                    { label: "March",  y: monthlyData[2].averageRevenue },
+                    { label: "April",  y: monthlyData[3].averageRevenue },
+                    { label: "May",  y: monthlyData[4].averageRevenue },
+                    { label: "June",  y: monthlyData[5].averageRevenue },
+                    { label: "July",  y: monthlyData[6].averageRevenue },
+                    { label: "August",  y: monthlyData[7].averageRevenue },
+                    { label: "September",  y: monthlyData[8].averageRevenue },
+                    { label: "October", y: monthlyData[9].averageRevenue },
+                    { label: "November",  y: monthlyData[10].averageRevenue },
+                    { label: "December",  y: monthlyData[11].averageRevenue },
+                    
+                  ]
+                }
+                ]
+              };
+              
+              $("#chartContainer").CanvasJSChart(options);
+              }
+              </script>
+              </head>
+              <body>
+              <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+              <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+              <script type="text/javascript" src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+              </body>
+              </html>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        
+    </body>
+</html>

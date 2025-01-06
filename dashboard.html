@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Restoran Yönetim Paneli</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="dashboard.html">Ana Sayfa</a>
+            
+            
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="exit.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            
+                            <div class="sb-sidenav-menu-heading">ANAMENÜ</div>
+                           
+                            <a class="nav-link" href="veri_giris_2.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Günlük Veri Girişi
+                            </a>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Ciro Karşılaştırmaları
+                            </a>
+                            <a class="nav-link" href="personel.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Personel - Fiş Verileri
+                            </a>
+                            <a class="nav-link" href="ikitariharasiciro.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                İki Tarih Arası Cirolar (Günlük)
+                            </a>
+                            <a class="nav-link" href="ikitariharasifisler.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                İki Tarih Arası Fişler (Günlük)
+                            </a>
+                            <a class="nav-link" href="ikitariharasitoplamciro.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                İki Tarih Arası Toplam Ciro
+                            </a>
+                            <a class="nav-link" href="ikitariharasitoplamfis.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                İki Tarih Arası Toplam Fiş
+                            </a>
+                           
+                           
+                            <a class="nav-link" href="yiilaringunleregoreciroortalamalari.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Yılların Günlere Göre Ciro Ortalamaları
+                            </a>
+                            <a class="nav-link" href="yillaringunleregorefissayisiortalamalari.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Yılların Günlere Göre Fiş Sayısı Ortalamaları
+                            </a>
+                                 
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Bahçelievler Burger King</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">FEBS GIDA</li>
+                        </ol>   
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        Açılış ve Kapanış Saatleri
+                                    </div>
+                                    <div class="time-work">
+                                        <h4>İşyeri Mesai Saatleri</h4>
+                                        <table>
+                                            <tr>
+                                                <th>Gün</th>
+                                                <th>Açılış Saati</th>
+                                                <th>Kapanış Saati</th>
+                                              </tr>
+                                              <tr>
+                                                <td>Pazartesi</td>
+                                                <td>11:00</td>
+                                                <td>23:00</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Salı</td>
+                                                <td>11:00</td>
+                                                <td>23:00</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Çarşamba</td>
+                                                <td>11:00</td>
+                                                <td>23:00</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Perşembe</td>
+                                                <td>11:00</td>
+                                                <td>23:00</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Cuma</td>
+                                                <td>11:00</td>
+                                                <td>23:00</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Cumartesi</td>
+                                                <td>11:00</td>
+                                                <td>23:00</td>
+                                              </tr>
+                                              <tr>
+                                                <td>Pazar</td>
+                                                <td>11:00</td>
+                                                <td>23:00</td>
+                                              </tr>
+                                            </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="social-media-table">
+                                        <div class="card-header">
+                                            <i class="fas fa-chart-area me-1"></i>
+                                            Burger King Tarihçesi
+                                        </div>
+                                        <div class="time-work-2">
+                                            <br>
+                                            <br>
+                                            <table>
+                                                <tr>
+                                                    <th>Burger King Faaliyet Başlangıcı</th>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Türkiye’deki faaliyetlerine 1995 yılında ATA Grubu’na bağlı TAB Gıda Sanayi A.Ş’nin ülkedeki ana geliştirici ve üretici haklarını alarak bünyesine katmasıyla başlayan dünyanın en sevilen markalarından Burger King®️,
+                                                        kısa sürede tüketicilerin beğenisi ve sadakatini kazanarak restoran sayısını istikrarlı bir şekilde çoğaltmıştır. Bugün Türkiye’de de hızlı servis sektörünün lider markalarından biri olan “alevde ızgara ateşinin kralı” Burger King®️, 
+                                                        ülke genelinde 700’den fazla restoranıyla hizmet vermektedir.Burger King®️, Ekim 2010’da merkezi Brezilya’da bulunan yatırım şirketi 3G Capital tarafından devralınmıştır ve Restaurant Brand International (RBI) çatısı altında faaliyet göstermektedir. 
+                                                        Markanın Türkiye operasyonlarını ise aralıksız olarak bir Türk şirketi olan TAB Gıda yürütmektedir.</td>
+                                                  </tr>
+                                                </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        
+    </body>
+</html>

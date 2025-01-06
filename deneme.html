@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarih Aralığı Seç</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Tarih Aralığı Seç</h2>
+    <form id="tarihForm">
+      <div class="form-group">
+        <label for="tarih1">Başlangıç Tarihi:</label>
+        <input type="date" class="form-control" id="tarih1" name="tarih1">
+      </div>
+      <div class="form-group">
+        <label for="tarih2">Bitiş Tarihi:</label>
+        <input type="date" class="form-control" id="tarih2" name="tarih2">
+      </div>
+      <button type="submit" class="btn btn-primary">Toplamı Getir</button>
+    </form>
+    <div id="sonuc" class="mt-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Başlangıç Tarihi</th>
+            <th>Bitiş Tarihi</th>
+            <th>Toplam Fiş</th>
+          </tr>
+        </thead>
+        <tbody id="sonucTabloBody">
+          <!-- Tablo için veriler burada görüntülenecek -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // Geçici olarak verileri tutacak dizi
+      var temporaryData = [];
+
+      $('#tarihForm').submit(function(e){
+        e.preventDefault();
+        var tarih1 = $('#tarih1').val();
+        var tarih2 = $('#tarih2').val();
+
+        if (tarih1 === '' || tarih2 === '') {
+          $('#sonucTabloBody').html('<tr><td colspan="3">Lütfen tarihleri doldurun</td></tr>');
+          return;
+        }
+
+        $.ajax({
+          type: 'GET',
+          url: '/iki-tarih-toplam-fis?tarih1=' + tarih1 + '&tarih2=' + tarih2,
+          success: function(data){
+            temporaryData.push({ tarih1: tarih1, tarih2: tarih2, toplam_fis: data.toplam_fis });
+
+            // Tabloyu güncelle, verileri göster
+            updateTable();
+          },
+          error: function(error){
+            $('#sonucTabloBody').html('<tr><td colspan="3">Hata: ' + error.responseJSON.error + '</td></tr>');
+          }
+        });
+      });
+
+      // Tabloyu güncelleyen fonksiyon
+      function updateTable() {
+        var tableContent = '';
+        temporaryData.forEach(function(item){
+          tableContent += '<tr><td>' + item.tarih1 + '</td><td>' + item.tarih2 + '</td><td>' + item.toplam_fis + '</td></tr>';
+        });
+        $('#sonucTabloBody').html(tableContent);
+      }
+    });
+  </script>
+</body>
+</html>
